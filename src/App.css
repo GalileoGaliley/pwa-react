@@ -13,6 +13,86 @@
   }
 }
 
+.info-block {
+  background: rgb(0 111 255 / 10%);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 40px;
+  border: 2px solid #b6cef7;
+  border-radius: 15px;
+  color: #475983;
+  text-align: left;
+}
+
+.camera-window {
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
+  background: #000;
+  top: 0;
+  left: 0;
+}
+
+.camera-body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.camera-data {
+  top: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+}
+
+.images-container {
+  background: rgba(98, 98, 98, 0.1);
+  padding: 30px;
+  margin: 40px;
+  border: 2px solid #b6b9b6;
+  border-radius: 15px;
+}
+
+.image-item {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.screen-button {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  left: calc(50vw - 35px);
+  bottom: 80px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.camera-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.action-container {
+  background: rgba(34, 255, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 40px;
+  border: 2px solid #c4f7b6;
+  border-radius: 15px;
+  color: #4b8347;
+  text-align: left;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -34,5 +114,16 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .info-block, .action-container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .action-container {
+    margin-bottom: 50px;
   }
 }
