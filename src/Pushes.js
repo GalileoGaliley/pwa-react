@@ -29,18 +29,18 @@ export default function Pushes()
         registration.showNotification(title, pushConfig);
       });
     });
-    // if ("Notification" in window) {
-    //   Notification.requestPermission().then(function (permission) {
-    //     if (permission === "granted") {
-    //       let notification = new Notification(title, {
-    //         body: body,
-    //         icon: "/iconPush.png"
-    //       });
-    //     }
-    //   });
-    // } else {
-    //   alert('К сожалению отправка пуш-уведомлений не поддерживается')
-    // }
+    if ("Notification" in window) {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === "granted") {
+          new Notification(title, {
+            body: body,
+            icon: "/iconPush.png"
+          });
+        }
+      });
+    } else {
+      alert('К сожалению отправка пуш-уведомлений не поддерживается')
+    }
   }
     return(
         <div>
