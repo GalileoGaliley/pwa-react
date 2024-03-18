@@ -1,45 +1,17 @@
-import { Navbar, Nav } from 'react-bootstrap';
-import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Home from './Home';
-import Pushes from './Pushes';
-import FilesAndCamera from './FilesAndCamera';
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import './App.css';
+import { Provider } from 'react-redux';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { store } from './store';
+import Router from "./Router";
 
 function App() {
-  const history = useHistory();
   return (
-    <div className="App">
-      <Router basename={'/main'}>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand onClick={() => {history.push('/')}}>P.W.A.</Navbar.Brand>
-          <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
-            <Nav>
-              <Nav.Link href={'#'}><Link className={'text-light text-decoration-none'} to="/">На главную</Link></Nav.Link>
-              <Nav.Link href={'#'}>
-                <Link className={'text-light text-decoration-none'} to="/pushes" >
-                  Push-уведомления
-                  </Link>
-              </Nav.Link>
-              <Nav.Link href={'#'}>
-                <Link className={'text-light text-decoration-none'} to="/files-and-camera">
-                  Загрузка файлов и камера
-                </Link>
-                </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-
-        </Navbar>
-        <Switch>
-          <Route path="/pushes" component={Pushes}></Route>
-          <Route path="/files-and-camera" component={FilesAndCamera}></Route>
-          <Route path="/" component={Home} ></Route>
-        </Switch>
-      </Router>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router/>
+      </div>
+    </Provider>
   );
 }
 

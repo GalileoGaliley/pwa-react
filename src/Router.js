@@ -1,0 +1,93 @@
+import { Navbar, Nav } from 'react-bootstrap';
+import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Pushes from './pages/Pushes';
+import FilesAndCamera from './pages/FilesAndCamera';
+import ChatHelp from './pages/ChatHelp';
+import Auth from './pages/Auth';
+import {useGetToken} from "./store/user/user.selectors";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {setUser} from "./store/user/user.slice";
+import Profile from "./pages/Profile";
+
+const Router = () => {
+  const history = useHistory();
+  const token = useGetToken();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    try {
+      const userData = JSON.parse(localStorage.getItem('user'));
+      if (userData) {
+        dispatch(setUser(userData));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+  return (
+    <BrowserRouter basename={'/main'}>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand onClick={() => {history.push('/')}}>P.W.A.</Navbar.Brand>
+        <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
+          <Nav>
+            <Nav.Link href={'#'}><Link className={'text-light text-decoration-none'} to="/">На главную</Link></Nav.Link>
+            {token ? (
+              <>
+                <Nav.Link href={'#'}>
+                  <Link className={'text-light text-decoration-none'} to="/pushes" >
+                    Push-уведомления
+                  </Link>
+                </Nav.Link>
+                <Nav.Link href={'#'}>
+                  <Link className={'text-light text-decoration-none'} to="/files-and-camera">
+                    Загрузка файлов и камера
+                  </Link>
+                </Nav.Link>
+                <Nav.Link href={'#'}>
+                  <Link className={'text-light text-decoration-none'} to="/help-chat">
+                    Чат с поддержкой
+                  </Link>
+                </Nav.Link>
+                <Nav.Link href={'#'}>
+                  <Link className={'text-light text-decoration-none'} to="/profile">
+                    Профиль
+                  </Link>
+                </Nav.Link>
+              </>
+            ) : (
+              <Nav.Link href={'#'}>
+                <Link className={'text-light text-decoration-none'} to="/auth">
+                  Вход / Регистрация
+                </Link>
+              </Nav.Link>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+
+      </Navbar>
+      <Switch>
+        {
+          token ? (
+            <>
+              <Route path="/pushes" component={Pushes}></Route>
+              <Route path="/files-and-camera" component={FilesAndCamera}></Route>
+              <Route path="/help-chat" component={ChatHelp}></Route>
+              <Route path="/profile" component={Profile}></Route>
+            </>
+          ) : (
+            <>
+              <Route path="/auth" component={Auth}></Route>
+              <Route path="/" component={Home} ></Route>
+            </>
+          )
+        }
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+export default Router;

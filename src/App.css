@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.link {
+  font-size: 14px;
+  cursor: pointer;
+  color: #003ac4;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -24,6 +30,140 @@
   border-radius: 15px;
   color: #475983;
   text-align: left;
+}
+
+.auth-block {
+  background: rgba(5, 48, 103, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+  gap: 10px;
+  min-height: 400px;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  justify-content: center;
+}
+
+.help-block {
+  background: rgba(5, 48, 103, 0.5);
+  border-radius: 15px;
+  margin: 40px;
+  padding: 30px;
+  gap: 10px;
+  max-height: 600px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.help-history {
+  background: rgb(78, 91, 115);
+  border-radius: 15px;
+  padding: 10px;
+  transition: width 0.3s ease-out;
+  width: 20px;
+  height: auto;
+  max-width: 300px;
+}
+
+.help-input-block {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.help-input {
+  border-radius: 15px;
+  font-size: 12px;
+  padding: 5px 10px;
+  height: 50px;
+  width: 100%;
+}
+
+.input {
+  border-radius: 15px;
+  font-size: 12px;
+  padding: 5px 10px;
+  height: 50px;
+  width: 100%;
+}
+
+.button {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 15px;
+  border: 1px solid #333333;
+  height: 50px;
+  background-color: #4b8347;
+  color: white;
+}
+
+.help-send-button {
+  font-size: 8px;
+  padding: 5px;
+  border-radius: 15px;
+  border: 1px solid #333333;
+  height: 50px;
+  background-color: #4b8347;
+  color: white;
+}
+
+.help-message-list {
+  height: auto;
+  gap: 10px;
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
+.help-messages {
+  border-radius: 15px;
+  padding: 10px;
+  transition: width 0.3s ease-out;
+  height: auto;
+  width: 20px;
+  background: rgba(95, 111, 117, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.help-active {
+  width: calc(100%);
+}
+
+.message-container {
+  width: 100%;
+  display: flex;
+}
+
+.message-container:nth-child(odd) {
+  justify-content: flex-end;
+}
+.message-container:nth-child(even) {
+  justify-content: flex-start;
+}
+
+.user {
+  background-color: #4b8347;
+}
+
+.assistant {
+  background-color: #677e67;
+}
+
+.message {
+  color: white;
+  font-size: 14px;
+  text-align: left;
+  padding: 10px;
+  max-width: 80%;
+  border-radius: 15px;
 }
 
 .camera-window {
@@ -118,9 +258,17 @@
 }
 
 @media (max-width: 500px) {
-  .info-block, .action-container {
+  .info-block, .auth-block, .action-container, .help-block {
     margin: 10px;
     padding: 10px;
+  }
+
+  .button {
+    font-size: 10px;
+  }
+
+  .info-block {
+    font-size: 12px;
   }
 
   .action-container {
