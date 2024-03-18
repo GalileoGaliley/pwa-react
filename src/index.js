@@ -7,6 +7,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+if ('serviceWorker' in navigator) {
+  console.log('serviceWorker');
+
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/serviceWorker.js').then(function(registration) {
+      console.log('Service Worker registered with scope:', registration.scope);
+    }, function(err) {
+      console.error('Service Worker registration failed:', err);
+    });
+  });
+} else {
+  console.log('no serviceWorker');
+}
+
 root.render(
   <React.StrictMode>
     <App />
