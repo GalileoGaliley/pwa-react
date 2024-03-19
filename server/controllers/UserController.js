@@ -14,8 +14,8 @@ const generateJWT = ({id, email, name})=>{
 
 class userController {
   async registration (req, res, next) {
-    const {name, email, password, duplicatePassword} = req.body;
 
+    const {name, email, password, duplicatePassword} = req.body;
     if (!email || !password || !name){
       return next(ApiError.badRequest('Вы не ввели email или password'));
     }

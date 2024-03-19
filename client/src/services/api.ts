@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {store} from "../store";
 
-const baseURL = 'http://localhost:5030/api/';
+const baseURL = 'https://solar-wind.site/api/';
 
 const axiosInstance = axios.create({
   baseURL,

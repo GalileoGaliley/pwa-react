@@ -7,9 +7,9 @@ class chatController {
     const token = req.headers.authorization.replace('Bearer ', '');
 
     const tokenData = await Token.findOne({where: {token: token}});
-    console.log(tokenData, 111111);
+
     const history = await History.findAll({where: {userId: tokenData.dataValues.userId}});
-    console.log(history);
+
     const data = {history: history};
 
     return res.json({data: data, code: 200});
@@ -20,17 +20,15 @@ class chatController {
 
     const token = req.headers.authorization.replace('Bearer ', '');
 
-    const tokenData = await Token.findOne({where: {token: token}});
-
-    const history = await History.findAll({where: {userId: tokenData.dataValues.userId}});
-
-    console.log(history);
-
-    if (historyId && !history.find((item) => item.dataValues.history_id === historyId)) {
-      return res.json({code: 400, data: 'Произошла ошибка, не правильно указан historyId'})
-    }
-
     try {
+      const tokenData = await Token.findOne({where: {token: token}});
+
+      const history = await History.findAll({where: {userId: tokenData.dataValues.userId}});
+  
+      if (historyId && !history.find((item) => item.dataValues.history_id === historyId)) {
+        return res.json({code: 400, data: 'Произошла ошибка, не правильно указан historyId'});
+      }
+
       const {data: messages} = await axios.post(
         'https://jellyfish-app-b9mgf.ondigitalocean.app/chat',
         {

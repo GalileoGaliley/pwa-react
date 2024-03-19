@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 // console.log(models);
-app.use('/api', router);
+app.use('/', router);
 app.use(errorHandler);
 
 const start = async () => {
