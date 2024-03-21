@@ -34,7 +34,7 @@ const Router = () => {
         <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
           <Nav>
-            <Nav.Link href={'#'}><Link className={'text-light text-decoration-none'} to="/">На главную</Link></Nav.Link>
+            <Nav.Link href={'#'}><Link className={'text-light text-decoration-none'} to="/main">На главную</Link></Nav.Link>
             {token ? (
               <>
                 <Nav.Link href={'#'}>
@@ -73,6 +73,7 @@ const Router = () => {
         {
           token ? (
             <>
+              <Route path="/main" component={Home} ></Route>
               <Route path="/pushes" component={Pushes}></Route>
               <Route path="/files-and-camera" component={FilesAndCamera}></Route>
               <Route path="/help-chat" component={ChatHelp}></Route>
@@ -81,7 +82,7 @@ const Router = () => {
           ) : (
             <>
               <Route path="/auth" component={Auth}></Route>
-              <Route path="/" component={Home} ></Route>
+              <Route path="/main" component={Home} ></Route>
             </>
           )
         }
