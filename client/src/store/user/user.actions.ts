@@ -31,7 +31,7 @@ const fetchSignInAction = createAsyncThunk<
 
       localStorage.setItem('user', JSON.stringify(userData.data));
       return userData;
-    } catch (error) {
+    } catch (error: any) {
       return Promise.reject(error);
     }
   },

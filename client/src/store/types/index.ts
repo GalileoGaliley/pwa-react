@@ -12,6 +12,7 @@ import { helpServices } from '../../services/help';
 
 import { UserState } from '../user/user.types';
 import {HelpState} from "../help/help.types";
+import {ToastState} from "../toast/toast.types";
 
 export type PayloadAction<T> = ReduxPayloadAction<T>;
 
@@ -37,6 +38,7 @@ type RequestSendFeedback = {
 type RootState = {
   user: UserState;
   help: HelpState;
+  toast: ToastState;
 }
 
 type ThunkMiddlewareOptions = {

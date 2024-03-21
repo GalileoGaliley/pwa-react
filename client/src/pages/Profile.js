@@ -1,14 +1,18 @@
 import React from 'react';
 import {useGetUser} from "../store/user/user.selectors";
+import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {logOut} from "../store/user/user.slice";
 
+
 const Profile = () => {
   const user = useGetUser();
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const click = () => {
     dispatch(logOut());
+    history.push('/main');
   }
 
   return (

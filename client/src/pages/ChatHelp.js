@@ -4,6 +4,7 @@ import {useGetHistoryId, useGetMessages} from "../store/help/help.selectors";
 import {useDispatch} from "react-redux";
 import {fetchSendMessageAction} from "../store/help/help.actions";
 import {pushMessage} from "../store/help/help.slice";
+import { setToast } from 'src/store/toast/toast.slice';
 
 export default function ChatHelp () {
   const messages = useGetMessages();
@@ -17,6 +18,10 @@ export default function ChatHelp () {
   }, []);
 
   const sendMessage = async () => {
+    if (message === '') {
+      await dispatch(setToast('Введите сообщение'));
+      return;
+    }
     setMessage('');
     await dispatch(pushMessage({content: message, role: 'user'}));
     await dispatch(fetchSendMessageAction({message: message, historyId: historyId ? historyId : undefined}));

@@ -4,6 +4,7 @@ import { helpServices } from '../services/help';
 import {authServices} from '../services/auth';
 import {userReducer} from "./user/user.slice";
 import {helpReducer} from "./help/help.slice";
+import {toastReducer} from "./toast/toast.slice";
 
 import type {
   Dependencies,
@@ -21,6 +22,7 @@ const dependencies: Dependencies = {
 const reducers: Reducers = {
   user: userReducer,
   help: helpReducer,
+  toast: toastReducer,
 };
 
 const rootReducer = combineReducers(reducers);

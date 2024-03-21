@@ -2,6 +2,29 @@
   text-align: center;
 }
 
+.toast-custom {
+  position: absolute;
+  top: 20px;
+  left: -500px;
+  width: 400px;
+  height: 50px;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(360deg, #dd5b5b, #f65c5c);;
+  transition: all 600ms linear;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.toast-active {
+  left: 20px;
+}
+
 .link {
   font-size: 14px;
   cursor: pointer;

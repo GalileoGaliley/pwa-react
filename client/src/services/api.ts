@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {store} from "../store";
 
+import { setToast } from 'src/store/toast/toast.slice';
+
 const baseURL = 'https://solar-wind.site/api/';
 
 const axiosInstance = axios.create({
@@ -21,8 +23,26 @@ axiosInstance.interceptors.request.use(
       }
     }
   },
-  (e) => {
-    console.log(e);
+  async (e) => {
+    return Promise.reject(e);
   }
 )
+
+axiosInstance.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  async (e) => {
+    console.log('12312312');
+
+    const dispatch = store.dispatch
+
+    console.log(e.response.data.message);
+    
+    dispatch(setToast(e.response.data.message))
+    console.log(e);
+    return Promise.reject(e);
+  }
+)
+
 export { axiosInstance };

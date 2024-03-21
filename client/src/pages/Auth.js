@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react'
-import {useGetUser} from "../store/user/user.selectors";
+import {useGetToken, useGetUser} from "../store/user/user.selectors";
 import {useDispatch} from "react-redux";
 import {fetchSignInAction, fetchSignUpAction} from "../store/user/user.actions";
 import {useHistory} from "react-router-dom";
@@ -15,15 +15,20 @@ export default function Auth () {
   const [password, setPassword] = useState('');
   const [duplicatePassword, setDuplicatePassword] = useState('');
 
-  const clickAuth = () => {
-    dispatch(fetchSignInAction({email: email, password: password}));
-    history.push('/');
+  const clickAuth = async() => {
+    await dispatch(fetchSignInAction({email: email, password: password}));
   }
 
-  const clickReg = () => {
-    dispatch(fetchSignUpAction({email: email, password: password, duplicatePassword: duplicatePassword, name: name}));
-    history.push('/');
+  const clickReg = async() => {
+    await dispatch(fetchSignUpAction({email: email, password: password, duplicatePassword: duplicatePassword, name: name}));
   }
+
+  useEffect(() => {
+    console.log(user);
+    if (user.name) {
+      history.push('/main');
+    }
+  }, [user]);
 
   return (
     <div className={'auth-block'}>
@@ -85,9 +90,6 @@ export default function Auth () {
         </>
       )}
 
-      {user.user.email}
-      {user.user.name}
-      {user.token}
       <div onClick={() => setAuthReg(state => !state)} className={'link'}>
         {authReg ? 'Регистрация' : 'Войти (если есть аккаунт)'}
       </div>

@@ -17,11 +17,11 @@ class userController {
 
     const {name, email, password, duplicatePassword} = req.body;
     if (!email || !password || !name){
-      return next(ApiError.badRequest('Вы не ввели email или password'));
+      return next(ApiError.badRequest('Вы не ввели email или пароль'));
     }
 
-    if (email.length < 8 || password.length < 8) {
-      return next(ApiError.badRequest('Почта и пароль должны быть не короче восьми символов'));
+    if (email.length < 4 || password.length < 4) {
+      return next(ApiError.badRequest('Почта и пароль должны быть не короче 4 символов'));
     }
 
     if (duplicatePassword !== password) {
@@ -60,10 +60,9 @@ class userController {
   };
 
   async login (req, res, next) {
-
     const {email, password} = req.body;
     if (!email){
-      return next(ApiError.badRequest('Введите логин или Email'));
+      return next(ApiError.badRequest('Введите Email'));;
     }
     if (!password){
       return next(ApiError.badRequest('Введите пароль'));
