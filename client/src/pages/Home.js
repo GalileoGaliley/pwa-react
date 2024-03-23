@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     return clearInterval(posInterval);
-  })
+  }, []);
 
   return(
     <div>
