@@ -26,7 +26,7 @@ export default function Auth () {
   useEffect(() => {
     console.log(user);
     if (user.name) {
-      history.push('/main');
+      history.push('/');
     }
   }, [user]);
 

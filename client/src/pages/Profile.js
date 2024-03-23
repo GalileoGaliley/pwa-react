@@ -12,7 +12,7 @@ const Profile = () => {
 
   const click = () => {
     dispatch(logOut());
-    history.push('/main');
+    history.push('/');
   }
 
   return (

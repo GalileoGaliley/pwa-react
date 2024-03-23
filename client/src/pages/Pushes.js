@@ -17,7 +17,7 @@ export default function Pushes()
     body: body,
     actions: [
       { action: 'reply', title: 'Ответить', open_url: 'https://zapodarkom-new-dev.msforyou.ru/#/'},
-      { action: 'dismiss', title: 'Отклонить', open_url: 'https://solar-wind.site/main' }
+      { action: 'dismiss', title: 'Отклонить', open_url: 'https://solar-wind.site/' }
     ],
     backgroundColor: '#ff4d00',
     badge: '/iconPush.png',

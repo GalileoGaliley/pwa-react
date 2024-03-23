@@ -4,16 +4,7 @@ import {Map, YMaps, Placemark, ZoomControl} from "@pbe/react-yandex-maps";
 import {useDispatch} from "react-redux";
 
 export default function Home() {
-
-  const [position, setPosition] = useState({});
-  const [error, setError] = useState('');
-  const posInterval = usePosition({setPosition, setError});
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    return clearInterval(posInterval);
-  }, []);
+  const pos = usePosition();
 
   return(
     <div>
@@ -26,18 +17,18 @@ export default function Home() {
           В нем представлены реализации функций push-уведомлений, доступа к файловой системе и камере
         </p>
       </div>
-      {position.lat ? (
+      {pos.data ? (
         <YMaps>
           <div>Это карта</div>
-          <Map width={'100%'} height={'600px'} defaultState={{ center: [position.lat, position.lon], zoom: 15 }}>
-            <Placemark geometry={[position.lat, position.lon]}/>
+          <Map width={'100%'} height={'600px'} defaultState={{ center: [pos.data.lat, pos.data.lon], zoom: 15 }}>
+            <Placemark geometry={[pos.data.lat, pos.data.lon]}/>
             <ZoomControl  />
           </Map>
 
         </YMaps>
       ) : (
         <div className={'map-error'}>
-          {error}
+          {pos.error}
         </div>
       )}
 
