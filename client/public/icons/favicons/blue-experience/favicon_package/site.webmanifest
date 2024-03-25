@@ -3,12 +3,12 @@
     "short_name": "PWA",
     "icons": [
         {
-            "src": "/icons/favicons/red-experience/favicon_package/android-chrome-192x192.png",
+            "src": "/icons/favicons/blue-experience/favicon_package/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/icons/favicons/red-experience/favicon_package/android-chrome-512x512.png",
+            "src": "/icons/favicons/blue-experience/favicon_package/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
