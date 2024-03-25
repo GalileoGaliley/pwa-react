@@ -23,18 +23,32 @@ function App() {
     const path = `/icons/favicons/${domainName}/favicon_package`;
 
     const faviconPath = `${path}/favicon.ico`;
+    const manifestPath = `${path}/site.webmanifest`;
     const faviconPath16x16 = `${path}/favicon-16x16.png`;
     const faviconPath32x32 = `${path}/favicon-32x32.png`;
     const faviconPath150x150 = `${path}/favicon-150x150.png`;
     const faviconPath192x192 = `${path}/favicon-192x192.png`;
     const faviconPath512x512 = `${path}/favicon-512x512.png`;
 
+    const linkManifest = document.createElement('link');
+
+    linkManifest.rel = 'manifest';
+    // linkManifest.type = 'text/json';
+    linkManifest.href = manifestPath;
+    head[0].append(linkManifest);
+
+    const linkAndroidIcon = document.createElement('link');
+
+    linkAndroidIcon.rel = 'apple-touch-icon';
+    linkAndroidIcon.type = 'image/png';
+    linkAndroidIcon.href = faviconPath192x192;
+    head[0].append(linkAndroidIcon);
+
     for (const link of [
       faviconPath,
       faviconPath16x16,
       faviconPath32x32,
       faviconPath150x150,
-      faviconPath192x192,
       faviconPath512x512,
     ]) {
       const linkFavicon = document.createElement('link');
