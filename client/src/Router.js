@@ -1,6 +1,7 @@
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
 import Home from './pages/Home';
+import MapPage from './pages/Map';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Pushes from './pages/Pushes';
 import FilesAndCamera from './pages/FilesAndCamera';
@@ -53,6 +54,11 @@ const Router = () => {
                   </Link>
                 </Nav.Link>
                 <Nav.Link href={'#'}>
+                  <Link className={'text-light text-decoration-none'} to="/map-page">
+                    Отслеживание геолокации
+                  </Link>
+                </Nav.Link>
+                <Nav.Link href={'#'}>
                   <Link className={'text-light text-decoration-none'} to="/profile">
                     Профиль
                   </Link>
@@ -74,6 +80,7 @@ const Router = () => {
           token ? (
             <>
               <Route path="/main" component={Home} ></Route>
+              <Route path="/map-page" component={MapPage} ></Route>
               <Route path="/pushes" component={Pushes}></Route>
               <Route path="/files-and-camera" component={FilesAndCamera}></Route>
               <Route path="/help-chat" component={ChatHelp}></Route>

@@ -1,10 +1,6 @@
-import React, {useEffect, useState} from 'react'
-import {usePosition} from "../store/hooks/usePosition";
-import {Map, YMaps, Placemark, ZoomControl} from "@pbe/react-yandex-maps";
-import {useDispatch} from "react-redux";
+import React from 'react'
 
 export default function Home() {
-  const pos = usePosition();
 
   return(
     <div>
@@ -17,21 +13,6 @@ export default function Home() {
           В нем представлены реализации функций push-уведомлений, доступа к файловой системе и камере
         </p>
       </div>
-      {pos.data ? (
-        <YMaps>
-          <div>Это карта</div>
-          <Map width={'100%'} height={'600px'} defaultState={{ center: [pos.data.lat, pos.data.lon], zoom: 15 }}>
-            <Placemark geometry={[pos.data.lat, pos.data.lon]}/>
-            <ZoomControl  />
-          </Map>
-
-        </YMaps>
-      ) : (
-        <div className={'map-error'}>
-          {pos.error}
-        </div>
-      )}
-
     </div>
   )
 }
