@@ -12,13 +12,13 @@ if ('serviceWorker' in navigator) {
 
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/serviceWorker.js').then(function(registration) {
-      console.log('Service Worker registered with scope:', registration.scope);
+      console.log('Service worker registered with scope:', registration.scope);
     }, function(err) {
-      console.error('Service Worker registration failed:', err);
+      console.error('Service worker registration failed:', err);
     });
   });
 } else {
-  console.log('no serviceWorker');
+  console.log('no service worker');
 }
 
 root.render(
