@@ -41,7 +41,7 @@ function App() {
       linkFavicon.rel = 'icon';
       linkFavicon.type = 'image/png';
       linkFavicon.href = link;
-      head[0].prepend(linkFavicon);
+      head[0].append(linkFavicon);
     }
   }, []);
 
