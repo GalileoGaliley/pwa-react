@@ -23,7 +23,7 @@ function App() {
     const path = `/icons/favicons/${domainName}/favicon_package`;
 
     const faviconPath = `${path}/favicon.ico`;
-    const manifestPath = `${path}/site.webmanifest`;
+    const manifestPath = `${path}/manifest.json`;
     const faviconPath16x16 = `${path}/favicon-16x16.png`;
     const faviconPath32x32 = `${path}/favicon-32x32.png`;
     const faviconPath150x150 = `${path}/favicon-150x150.png`;
@@ -34,7 +34,7 @@ function App() {
     const linkManifest = document.createElement('link');
 
     linkManifest.rel = 'manifest';
-    // linkManifest.type = 'text/json';
+    linkManifest.type = 'text/json';
     linkManifest.href = manifestPath;
     head[0].append(linkManifest);
 
