@@ -27,8 +27,9 @@ function App() {
     const faviconPath16x16 = `${path}/favicon-16x16.png`;
     const faviconPath32x32 = `${path}/favicon-32x32.png`;
     const faviconPath150x150 = `${path}/favicon-150x150.png`;
-    const faviconPath192x192 = `${path}/favicon-192x192.png`;
-    const faviconPath512x512 = `${path}/favicon-512x512.png`;
+    const faviconPath192x192 = `${path}/android-chrome-192x192.png`;
+    const appleTouchIcon = `${path}/apple-touch-icon.png`;
+    const faviconPath512x512 = `${path}/android-chrome-512x512.png`;
 
     const linkManifest = document.createElement('link');
 
@@ -41,7 +42,7 @@ function App() {
 
     linkAndroidIcon.rel = 'apple-touch-icon';
     linkAndroidIcon.type = 'image/png';
-    linkAndroidIcon.href = faviconPath192x192;
+    linkAndroidIcon.href = appleTouchIcon;
     head[0].append(linkAndroidIcon);
 
     for (const link of [
