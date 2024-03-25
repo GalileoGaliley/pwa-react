@@ -20,7 +20,7 @@ function App() {
     const href = window.location.href;
     const found = faviconPaths.find((item) => href.includes(item) ? item : null);
     const domainName = found ? `${found}` : 'default';
-    const path = `icons/favicons/${domainName}`;
+    const path = `/icons/favicons/${domainName}`;
 
     const faviconPath = `${path}/favicon.ico`;
     const faviconPath16x16 = `${path}/favicon-16x16.png`;
