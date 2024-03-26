@@ -45,7 +45,7 @@ export default function Pushes() {
     return(
         <div>
             <h1>Push-уведомления</h1>
-            <div className={`${domainName}-info-block`}>
+            <div className={`${domainName}-info-block info-block`}>
               <h3>
                 О Push-уведомлениях
               </h3>
@@ -96,7 +96,7 @@ export default function Pushes() {
                 заголовок, тело уведомления, и нажмите кнопку что-бы увидеть результат
               </p>
             </div>
-            <div className={`${domainName}-action-container`}>
+            <div className={`${domainName}-action-container action-container`}>
               <div className={'form-control-plaintext'}>
                 <p>
                   Заголовок

@@ -61,7 +61,7 @@ export default function FilesAndCamera() {
   return (
     <div>
       <h1>Загрузка изображений и доступ к камере</h1>
-      <div className={`${domainName}-info-block`}>
+      <div className={`${domainName}-info-block info-block`}>
         <h3>
           Загрузка изображений
         </h3>
@@ -79,7 +79,7 @@ export default function FilesAndCamera() {
           </ul>
         </p>
       </div>
-      <div className={`${domainName}-action-container`}>
+      <div className={`${domainName}-action-container action-container`}>
         <div className={'form-control-plaintext'}>
           <p>
             выбрать файл

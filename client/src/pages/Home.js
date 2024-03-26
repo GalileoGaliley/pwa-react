@@ -7,7 +7,7 @@ export default function Home() {
   return(
     <div>
       <h1>Домашняя страница</h1>
-      <div className={`${domainName}-info-block`}>
+      <div className={`${domainName}-info-block info-block`}>
         <h3>
           Это приложение создано для демонстрации
         </h3>
