@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import {BsArrowDown} from 'react-icons/bs';
 
 import {Button} from "react-bootstrap";
+import {useDomain} from "../store/hooks/useDomain";
 
-export default function Pushes()
-{
-
+export default function Pushes() {
+  const domainName = useDomain();
   const [title, setTitle] = useState('Новое уведомление');
   const [body, setBody] = useState('У вас есть новое сообщение');
 
@@ -45,7 +45,7 @@ export default function Pushes()
     return(
         <div>
             <h1>Push-уведомления</h1>
-            <div className={'info-block'}>
+            <div className={`${domainName}-info-block`}>
               <h3>
                 О Push-уведомлениях
               </h3>
@@ -96,7 +96,7 @@ export default function Pushes()
                 заголовок, тело уведомления, и нажмите кнопку что-бы увидеть результат
               </p>
             </div>
-            <div className={'action-container'}>
+            <div className={`${domainName}-action-container`}>
               <div className={'form-control-plaintext'}>
                 <p>
                   Заголовок

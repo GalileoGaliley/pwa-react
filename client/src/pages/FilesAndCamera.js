@@ -2,8 +2,11 @@ import React, {useState, useEffect, useRef, useCallback} from 'react'
 import {Button} from 'react-bootstrap';
 import Webcam from "react-webcam";
 import {BsCamera} from "react-icons/bs";
+import {useDomain} from "../store/hooks/useDomain";
+
 export default function FilesAndCamera() {
   const storageName = 'imageList';
+  const domainName = useDomain();
   const [image, setImage] = useState();
   const [imgSrc, setImgSrc] = useState();
   const [images, setImages] = useState([]);
@@ -28,10 +31,6 @@ export default function FilesAndCamera() {
     }
   }, [images.length]);
 
-  useEffect(() => {
-    console.log(imgSrc);
-  }, [imgSrc]);
-
   const clear = () => {
     setImages([]);
     localStorage.setItem(storageName, JSON.stringify([]));
@@ -39,11 +38,8 @@ export default function FilesAndCamera() {
 
   const deleteOne = (index) => {
     const arr = images;
-    console.log(arr);
-    console.log(index);
     arr.splice(index, 1)
     setImages(arr);
-    console.log(images);
   }
 
   const saveImage = () => {
@@ -65,7 +61,7 @@ export default function FilesAndCamera() {
   return (
     <div>
       <h1>Загрузка изображений и доступ к камере</h1>
-      <div className={'info-block'}>
+      <div className={`${domainName}-info-block`}>
         <h3>
           Загрузка изображений
         </h3>
@@ -83,7 +79,7 @@ export default function FilesAndCamera() {
           </ul>
         </p>
       </div>
-      <div className={'action-container'}>
+      <div className={`${domainName}-action-container`}>
         <div className={'form-control-plaintext'}>
           <p>
             выбрать файл

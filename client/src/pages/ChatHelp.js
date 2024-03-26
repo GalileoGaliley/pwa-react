@@ -5,10 +5,12 @@ import {useDispatch} from "react-redux";
 import {fetchSendMessageAction} from "../store/help/help.actions";
 import {pushMessage} from "../store/help/help.slice";
 import { setToast } from 'src/store/toast/toast.slice';
+import {useDomain} from "../store/hooks/useDomain";
 
 export default function ChatHelp () {
   const messages = useGetMessages();
   const historyId = useGetHistoryId();
+  const domainName = useDomain();
   const dispatch = useDispatch();
   const [historyActive, setHistoryActive] = useState(false);
   const [message, setMessage] = useState('');
@@ -30,7 +32,7 @@ export default function ChatHelp () {
   return (
     <div>
       <h1>Поддержка</h1>
-      <div className={'info-block'}>
+      <div className={`${domainName}-info-block`}>
         <h3>
           Поддержка
         </h3>
@@ -48,10 +50,10 @@ export default function ChatHelp () {
           В данном случае реализована с помощью GPT
         </p>
       </div>
-      <div className={'help-block'}>
+      <div className={`${domainName}-help-block`}>
         <div
           onClick={() => {setHistoryActive(!historyActive)}}
-          className={`help-history ${historyActive ? 'help-active' : ''}`}>
+          className={`${domainName}-help-history ${historyActive ? 'help-active' : ''}`}>
 
         </div>
         <div className={`help-messages ${historyActive ? '' : 'help-active'}`}>

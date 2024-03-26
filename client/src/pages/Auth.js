@@ -10,7 +10,7 @@ export default function Auth () {
   const history = useHistory();
 
   const user = useGetUser();
-  const domain = useDomain();
+  const domainName = useDomain();
   const [authReg, setAuthReg] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -33,11 +33,11 @@ export default function Auth () {
   }, [user]);
 
   return (
-    <div className={`${domain}-auth-block`}>
+    <div className={`${domainName}-auth-block`}>
       {authReg ? (
         <>
           <h1>Вход</h1>
-          <div className={`${domain}-auth-block`}>
+          <div className={`${domainName}-auth-block`}>
             <input
               className={'input'}
               placeholder={'Почта'}
@@ -52,13 +52,13 @@ export default function Auth () {
               type={'password'}
               onChange={(event) => {setPassword(event.target.value)}}
             />
-            <button className={`${domain}-button`} onClick={clickAuth}>Отправить</button>
+            <button className={`${domainName}-button`} onClick={clickAuth}>Отправить</button>
           </div>
         </>
       ) : (
         <>
           <h1>Регистрация</h1>
-          <div className={`${domain}-auth-block`}>
+          <div className={`${domainName}-auth-block`}>
             <input
               className={'input'}
               placeholder={'Почта'}
@@ -87,7 +87,7 @@ export default function Auth () {
               type={'password'}
               onChange={(event) => {setDuplicatePassword(event.target.value)}}
             />
-            <button className={`${domain}-button`} onClick={clickReg}>Отправить</button>
+            <button className={`${domainName}-button`} onClick={clickReg}>Отправить</button>
           </div>
         </>
       )}
