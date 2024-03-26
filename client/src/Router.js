@@ -47,7 +47,7 @@ const Router = () => {
     <BrowserRouter basename={'/main'}>
       <Navbar collapseOnSelect className={`${domainName}-navbar`}>
         <Navbar.Brand onClick={() => {history.push('/main')}}>
-          <img src={logoObj[domainName]} alt={'logo'}/>
+          <img className={'logo'} src={logoObj[domainName]} alt={'logo'}/>
         </Navbar.Brand>
         <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
