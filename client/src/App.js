@@ -19,7 +19,7 @@ function App() {
     const href = window.location.href;
     const found = faviconPaths.find(item => href.includes(item));
     const domainName = found ? found : 'default';
-    const path = `/icons/favicons/${domainName}/favicon_package`;
+    const path = `icons/favicons/${domainName}/favicon_package`;
 
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
