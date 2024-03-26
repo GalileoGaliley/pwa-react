@@ -2,6 +2,22 @@
   text-align: center;
 }
 
+.default-navbar {
+  background-color: #282c34;
+}
+
+.red-experience-navbar {
+  background-color: #830000;
+}
+
+.yellow-experience-navbar {
+  background-color: #9f8000;
+}
+
+.blue-experience-navbar {
+  background-color: #00388a;
+}
+
 .toast-custom {
   position: absolute;
   top: 20px;

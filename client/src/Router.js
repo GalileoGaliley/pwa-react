@@ -12,11 +12,14 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {setUser} from "./store/user/user.slice";
 import Profile from "./pages/Profile";
+import {useDomain} from "./store/hooks/useDomain";
 
 const Router = () => {
   const history = useHistory();
   const token = useGetToken();
   const dispatch = useDispatch();
+
+  const domainName = useDomain();
 
   useEffect(() => {
     try {
@@ -30,7 +33,7 @@ const Router = () => {
   }, []);
   return (
     <BrowserRouter basename={'/main'}>
-      <Navbar collapseOnSelect>
+      <Navbar collapseOnSelect className={`${domainName}-navbar`}>
         <Navbar.Brand onClick={() => {history.push('/main')}}>P.W.A.</Navbar.Brand>
         <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
