@@ -30,7 +30,7 @@ const Router = () => {
   }, []);
   return (
     <BrowserRouter basename={'/main'}>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect>
         <Navbar.Brand onClick={() => {history.push('/main')}}>P.W.A.</Navbar.Brand>
         <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
