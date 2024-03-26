@@ -50,7 +50,7 @@ export default function ChatHelp () {
           В данном случае реализована с помощью GPT
         </p>
       </div>
-      <div className={`${domainName}-help-block info-block`}>
+      <div className={`${domainName}-help-block help-block`}>
         <div
           onClick={() => {setHistoryActive(!historyActive)}}
           className={`${domainName}-help-history help-history ${historyActive ? 'help-active' : ''}`}>
