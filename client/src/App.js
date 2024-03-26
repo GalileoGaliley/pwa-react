@@ -16,48 +16,29 @@ const faviconPaths = [
 function App() {
 
   useEffect(() => {
-    const head = document.getElementsByTagName('head');
     const href = window.location.href;
-    const found = faviconPaths.find((item) => href.includes(item) ? item : null);
-    const domainName = found ? `${found}` : 'default';
+    const found = faviconPaths.find(item => href.includes(item));
+    const domainName = found ? found : 'default';
     const path = `/icons/favicons/${domainName}/favicon_package`;
 
-    const faviconPath = `${path}/favicon.ico`;
-    const manifestPath = `${path}/manifest.json`;
-    const faviconPath16x16 = `${path}/favicon-16x16.png`;
-    const faviconPath32x32 = `${path}/favicon-32x32.png`;
-    const faviconPath150x150 = `${path}/favicon-150x150.png`;
-    const faviconPath192x192 = `${path}/android-chrome-192x192.png`;
-    const appleTouchIcon = `${path}/apple-touch-icon.png`;
-    const faviconPath512x512 = `${path}/android-chrome-512x512.png`;
-
     const linkManifest = document.createElement('link');
-
     linkManifest.rel = 'manifest';
-    linkManifest.type = 'text/json';
-    linkManifest.href = manifestPath;
-    head[0].append(linkManifest);
+    linkManifest.href = `${path}/manifest.json`;
+    document.head.appendChild(linkManifest);
 
-    const linkAndroidIcon = document.createElement('link');
+    const linkAppleTouchIcon = document.createElement('link');
+    linkAppleTouchIcon.rel = 'apple-touch-icon';
+    linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
+    document.head.appendChild(linkAppleTouchIcon);
 
-    linkAndroidIcon.rel = 'apple-touch-icon';
-    linkAndroidIcon.type = 'image/png';
-    linkAndroidIcon.href = appleTouchIcon;
-    head[0].append(linkAndroidIcon);
-
-    for (const link of [
-      faviconPath,
-      faviconPath16x16,
-      faviconPath32x32,
-      faviconPath150x150,
-      faviconPath512x512,
-    ]) {
-      const linkFavicon = document.createElement('link');
-      linkFavicon.rel = 'icon';
-      linkFavicon.type = 'image/png';
-      linkFavicon.href = link;
-      head[0].append(linkFavicon);
-    }
+    const iconSizes = ['.ico', '-16x16.png', '-32x32.png', '-150x150.png', '-192x192.png', '-512x512.png'];
+    iconSizes.forEach(size => {
+      const linkIcon = document.createElement('link');
+      linkIcon.rel = 'icon';
+      linkIcon.type = 'image/png';
+      linkIcon.href = `${path}/favicon${size}`;
+      document.head.appendChild(linkIcon);
+    });
   }, []);
 
   return (
