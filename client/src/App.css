@@ -59,20 +59,37 @@
 }
 
 .info-block {
-  background: rgb(0 111 255 / 10%);
   padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 40px;
-  border: 2px solid #b6cef7;
   border-radius: 15px;
   color: #475983;
   text-align: left;
 }
 
+.default-info-block {
+  border: 2px solid #595959;
+  background: rgb(134, 134, 134);
+}
+
+.red-experience-info-block {
+  border: 2px solid #b26262;
+  background: rgb(255, 158, 164);
+}
+
+.blue-experience-info-block {
+  border: 2px solid #4b6998;
+  background: rgb(129, 175, 243);
+}
+
+.yellow-experience-info-block {
+  border: 2px solid #ab9c2f;
+  background: rgb(229, 195, 114);
+}
+
 .auth-block {
-  background: rgba(5, 48, 103, 0.1);
   border-radius: 15px;
   padding: 30px;
   gap: 10px;
@@ -84,8 +101,23 @@
   justify-content: center;
 }
 
+.default-auth-block {
+  background: rgba(64, 66, 66, 0.1);
+}
+
+.red-experience-auth-block {
+  background: rgba(255, 0, 16, 0.16);
+}
+
+.blue-experience-auth-block {
+  background: rgba(0, 110, 255, 0.15);
+}
+
+.yellow-experience-auth-block {
+  background: rgba(255, 174, 0, 0.15);
+}
+
 .help-block {
-  background: rgba(5, 48, 103, 0.5);
   border-radius: 15px;
   margin: 40px;
   padding: 30px;
@@ -98,14 +130,45 @@
   position: relative;
 }
 
+.default-help-block {
+  background: rgba(64, 66, 66, 0.5);
+}
+
+.red-experience-help-block {
+  background: rgba(255, 0, 16, 0.5);
+}
+
+.blue-experience-help-block {
+  background: rgba(0, 110, 255, 0.5);
+}
+
+.yellow-experience-help-block {
+  background: rgba(255, 174, 0, 0.5);
+}
+
 .help-history {
-  background: rgb(78, 91, 115);
   border-radius: 15px;
   padding: 10px;
   transition: width 0.3s ease-out;
   width: 20px;
   height: auto;
   max-width: 300px;
+}
+
+.default-help-history {
+  background: rgba(42, 42, 42, 0.5);
+}
+
+.red-experience-help-history {
+  background: rgba(145, 5, 15, 0.5);
+}
+
+.blue-experience-help-history {
+  background: rgba(0, 60, 138, 0.5);
+}
+
+.yellow-experience-help-history {
+  background: rgba(148, 104, 3, 0.5);
 }
 
 .help-input-block {
@@ -138,8 +201,23 @@
   border-radius: 15px;
   border: 1px solid #333333;
   height: 50px;
-  background-color: #4b8347;
   color: white;
+}
+
+.default-button {
+  background-color: #4b8347;
+}
+
+.red-experience-button {
+  background-color: #834747;
+}
+
+.blue-experience-button {
+  background-color: #507294;
+}
+
+.yellow-experience-button {
+  background-color: #938721;
 }
 
 .help-send-button {
@@ -270,6 +348,22 @@
   border-radius: 15px;
   color: #4b8347;
   text-align: left;
+}
+
+.default-action-container {
+  background-color: #4b8347;
+}
+
+.red-experience-action-container {
+  background-color: #ff4a4a;
+}
+
+.blue-experience-action-container {
+  background-color: #519efa;
+}
+
+.yellow-experience-action-container {
+  background-color: #ffed5b;
 }
 
 .App-header {

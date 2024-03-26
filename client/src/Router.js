@@ -14,6 +14,11 @@ import {setUser} from "./store/user/user.slice";
 import Profile from "./pages/Profile";
 import {useDomain} from "./store/hooks/useDomain";
 
+import logoYellow from './assets/images/logos/yellow-experience.png';
+import logoRed from './assets/images/logos/red-experience.png';
+import logoBlue from './assets/images/logos/blue-experience.png';
+import logoDefault from './assets/images/logos/default-logo.png';
+
 const Router = () => {
   const history = useHistory();
   const token = useGetToken();
@@ -31,10 +36,19 @@ const Router = () => {
       console.log(e);
     }
   }, []);
+
+  const logoObj = {
+    'red-experience': logoRed,
+    'blue-experience': logoBlue,
+    'yellow-experience': logoYellow,
+    'default': logoDefault
+  }
   return (
     <BrowserRouter basename={'/main'}>
       <Navbar collapseOnSelect className={`${domainName}-navbar`}>
-        <Navbar.Brand onClick={() => {history.push('/main')}}>P.W.A.</Navbar.Brand>
+        <Navbar.Brand onClick={() => {history.push('/main')}}>
+          <img src={logoObj[domainName]} alt={'logo'}/>
+        </Navbar.Brand>
         <Navbar.Toggle className={'mr-3'} aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className={'justify-content-start'} id="responsive-navbar-nav">
           <Nav>

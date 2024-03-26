@@ -3,12 +3,14 @@ import {useGetToken, useGetUser} from "../store/user/user.selectors";
 import {useDispatch} from "react-redux";
 import {fetchSignInAction, fetchSignUpAction} from "../store/user/user.actions";
 import {useHistory} from "react-router-dom";
+import {useDomain} from "../store/hooks/useDomain";
 
 export default function Auth () {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const user = useGetUser();
+  const domain = useDomain();
   const [authReg, setAuthReg] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -31,11 +33,11 @@ export default function Auth () {
   }, [user]);
 
   return (
-    <div className={'auth-block'}>
+    <div className={`${domain}-auth-block`}>
       {authReg ? (
         <>
           <h1>Вход</h1>
-          <div className={'auth-block'}>
+          <div className={`${domain}-auth-block`}>
             <input
               className={'input'}
               placeholder={'Почта'}
@@ -50,13 +52,13 @@ export default function Auth () {
               type={'password'}
               onChange={(event) => {setPassword(event.target.value)}}
             />
-            <button className={'button'} onClick={clickAuth}>Отправить</button>
+            <button className={`${domain}-button`} onClick={clickAuth}>Отправить</button>
           </div>
         </>
       ) : (
         <>
           <h1>Регистрация</h1>
-          <div className={'auth-block'}>
+          <div className={`${domain}-auth-block`}>
             <input
               className={'input'}
               placeholder={'Почта'}
@@ -85,7 +87,7 @@ export default function Auth () {
               type={'password'}
               onChange={(event) => {setDuplicatePassword(event.target.value)}}
             />
-            <button className={'button'} onClick={clickReg}>Отправить</button>
+            <button className={`${domain}-button`} onClick={clickReg}>Отправить</button>
           </div>
         </>
       )}
