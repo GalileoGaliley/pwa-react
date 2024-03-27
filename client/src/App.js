@@ -52,7 +52,7 @@ function App() {
 
     const linkIconSafari = document.createElement('link');
     linkIconSafari.rel = 'mask-icon';
-    linkIconFavicon.type = 'image/svg';
+    linkIconSafari.type = 'image/svg';
     linkIconSafari.href = `${path}/safari-pinned-tab.svg`;
     head[0].prepend(linkIconSafari);
 
