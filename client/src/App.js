@@ -17,6 +17,7 @@ function App() {
 
   useEffect(() => {
     const href = window.location.href;
+    const head = document.getElementsByTagName('head');
     const found = faviconPaths.find(item => href.includes(item));
     const domainName = found ? found : 'default';
     const path = `icons/favicons/${domainName}/favicon_package`;
@@ -24,12 +25,12 @@ function App() {
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
     linkManifest.href = `${path}/manifest.json`;
-    document.head.appendChild(linkManifest);
+    head.appendChild(linkManifest);
 
     const linkAppleTouchIcon = document.createElement('link');
     linkAppleTouchIcon.rel = 'apple-touch-icon';
     linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
-    document.head.appendChild(linkAppleTouchIcon);
+    head.appendChild(linkAppleTouchIcon);
 
     const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
 
@@ -38,7 +39,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/android-chrome${back}`;
-      document.head.prepend(linkIcon);
+      head.prepend(linkIcon);
     });
 
     const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
@@ -48,7 +49,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/favicon${back}`;
-      document.head.prepend(linkIcon);
+      head.prepend(linkIcon);
     });
   }, []);
 
