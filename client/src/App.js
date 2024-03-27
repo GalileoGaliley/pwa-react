@@ -20,7 +20,7 @@ function App() {
     const head = document.getElementsByTagName('head');
     const found = faviconPaths.find(item => href.includes(item));
     const domainName = found ? found : 'default';
-    const path = `https://yellow-experience.solar-wind.site/icons/favicons/${domainName}/favicon_package`;
+    const path = `https://${domainName}.solar-wind.site/icons/favicons/${domainName}/favicon_package`;
 
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
