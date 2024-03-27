@@ -25,12 +25,12 @@ function App() {
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
     linkManifest.href = `${path}/manifest.json`;
-    head.appendChild(linkManifest);
+    head[0].prepend(linkManifest);
 
     const linkAppleTouchIcon = document.createElement('link');
     linkAppleTouchIcon.rel = 'apple-touch-icon';
     linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
-    head.appendChild(linkAppleTouchIcon);
+    head[0].prepend(linkAppleTouchIcon);
 
     const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
 
@@ -39,7 +39,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/android-chrome${back}`;
-      head.prepend(linkIcon);
+      head[0].prepend(linkIcon);
     });
 
     const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
@@ -49,7 +49,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/favicon${back}`;
-      head.prepend(linkIcon);
+      head[0].prepend(linkIcon);
     });
   }, []);
 
