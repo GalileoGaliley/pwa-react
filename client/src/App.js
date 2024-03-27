@@ -32,23 +32,29 @@ function App() {
     linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
     head[0].prepend(linkAppleTouchIcon);
 
-    const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
+    const iconSizesAndroid = ['android-chrome-192x192.png', 'android-chrome-512x512.png'];
 
     iconSizesAndroid.forEach(back => {
       const linkIcon = document.createElement('link');
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/android-chrome${back}`;
+      linkIcon.href = `${path}/${back}`;
       head[0].prepend(linkIcon);
     });
 
-    const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
+    const iconSizes = ['favicon-16x16.png', 'favicon-32x32.png', 'mstile-150x150.png','android-chrome-192x192.png', 'android-chrome-512x512.png'];
 
-    iconSizes.forEach(back => {
+    const linkIconFavicon = document.createElement('link');
+    linkIconFavicon.rel = 'icon';
+    // linkIconFavicon.type = 'image/png';
+    linkIconFavicon.href = `${path}/favicon.ico`;
+    head[0].prepend(linkIconFavicon);
+
+    iconSizes.forEach(name => {
       const linkIcon = document.createElement('link');
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/favicon${back}`;
+      linkIcon.href = `${path}/${name}`;
       head[0].prepend(linkIcon);
     });
   }, []);
