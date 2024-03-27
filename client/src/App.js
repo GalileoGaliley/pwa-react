@@ -25,12 +25,12 @@ function App() {
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
     linkManifest.href = `${path}/manifest.json`;
-    head[0].prepend(linkManifest);
+    head[0].appendChild(linkManifest);
 
     const linkAppleTouchIcon = document.createElement('link');
     linkAppleTouchIcon.rel = 'apple-touch-icon';
     linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
-    head[0].prepend(linkAppleTouchIcon);
+    head[0].appendChild(linkAppleTouchIcon);
 
     const iconSizesAndroid = ['android-chrome-192x192.png', 'android-chrome-512x512.png'];
 
@@ -39,7 +39,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/${back}`;
-      head[0].prepend(linkIcon);
+      head[0].appendChild(linkIcon);
     });
 
     const iconSizes = ['favicon-16x16.png', 'favicon-32x32.png', 'mstile-150x150.png','android-chrome-192x192.png', 'android-chrome-512x512.png'];
@@ -48,20 +48,20 @@ function App() {
     linkIconFavicon.rel = 'icon';
     // linkIconFavicon.type = 'image/png';
     linkIconFavicon.href = `${path}/favicon.ico?v=M44lzPylqQ`;
-    head[0].prepend(linkIconFavicon);
+    head[0].appendChild(linkIconFavicon);
 
     const linkIconSafari = document.createElement('link');
     linkIconSafari.rel = 'mask-icon';
-    linkIconSafari.type = 'image/svg';
+    linkIconSafari.type = 'image/svg+xml';
     linkIconSafari.href = `${path}/safari-pinned-tab.svg`;
-    head[0].prepend(linkIconSafari);
+    head[0].appendChild(linkIconSafari);
 
     iconSizes.forEach(name => {
       const linkIcon = document.createElement('link');
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/${name}`;
-      head[0].prepend(linkIcon);
+      head[0].appendChild(linkIcon);
     });
   }, []);
 
