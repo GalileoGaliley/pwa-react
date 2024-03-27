@@ -38,7 +38,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/android-chrome${back}`;
-      document.head.appendChild(linkIcon);
+      document.head.prepend(linkIcon);
     });
 
     const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
@@ -48,7 +48,7 @@ function App() {
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
       linkIcon.href = `${path}/favicon${back}`;
-      document.head.appendChild(linkIcon);
+      document.head.prepend(linkIcon);
     });
   }, []);
 
