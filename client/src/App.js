@@ -31,12 +31,21 @@ function App() {
     linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
     document.head.appendChild(linkAppleTouchIcon);
 
-    const iconSizes = ['.ico', '-16x16.png', '-32x32.png', '-150x150.png', '-192x192.png', '-512x512.png'];
-    iconSizes.forEach(size => {
+    const iconSizes = ['.ico', '-16x16.png', '-32x32.png', '-150x150.png'];
+    const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
+    iconSizes.forEach(back => {
       const linkIcon = document.createElement('link');
       linkIcon.rel = 'icon';
       linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/favicon${size}`;
+      linkIcon.href = `${path}/favicon${back}`;
+      document.head.appendChild(linkIcon);
+    });
+
+    iconSizesAndroid.forEach(back => {
+      const linkIcon = document.createElement('link');
+      linkIcon.rel = 'icon';
+      linkIcon.type = 'image/png';
+      linkIcon.href = `${path}/android-chrome${back}`;
       document.head.appendChild(linkIcon);
     });
   }, []);
