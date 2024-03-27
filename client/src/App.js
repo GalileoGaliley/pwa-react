@@ -50,6 +50,12 @@ function App() {
     linkIconFavicon.href = `${path}/favicon.ico?v=M44lzPylqQ`;
     head[0].prepend(linkIconFavicon);
 
+    const linkIconSafari = document.createElement('link');
+    linkIconSafari.rel = 'mask-icon';
+    linkIconFavicon.type = 'image/svg';
+    linkIconSafari.href = `${path}/safari-pinned-tab.svg`;
+    head[0].prepend(linkIconSafari);
+
     iconSizes.forEach(name => {
       const linkIcon = document.createElement('link');
       linkIcon.rel = 'icon';
