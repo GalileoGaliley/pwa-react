@@ -37,7 +37,7 @@ function App() {
     const head = document.getElementsByTagName('head');
     const href = window.location.href;
     const finded = faviconPaths.find((item) => href.includes(item) ? item : null);
-    const domainName = 'tele2';
+    const domainName = '-tele2';
     const path = 'favicon/other-favicon/favicon';
 
     const faviconPath = `${path}${domainName}.ico`;
