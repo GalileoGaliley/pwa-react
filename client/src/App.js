@@ -33,8 +33,6 @@ const faviconPathsOther = [
 ];
 
 function App() {
-  const href = window.location.href;
-
   useEffect(() => {
     const head = document.getElementsByTagName('head');
     const href = window.location.href;
