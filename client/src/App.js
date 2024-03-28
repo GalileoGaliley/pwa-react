@@ -47,6 +47,7 @@ function App() {
 
     const linkIconFavicon = document.createElement('link');
     linkIconFavicon.rel = 'icon';
+    linkIconFavicon.type="image/x-icon";
     // linkIconFavicon.type = 'image/png';
     linkIconFavicon.href = `${path}/favicon.ico?v=M44lzPylqQ`;
     head[0].appendChild(linkIconFavicon);
