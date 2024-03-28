@@ -29,6 +29,7 @@ function App() {
 
     const linkAppleTouchIcon = document.createElement('link');
     linkAppleTouchIcon.rel = 'apple-touch-icon';
+    linkAppleTouchIcon.sizes = '180x180';
     linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
     head[0].appendChild(linkAppleTouchIcon);
 
