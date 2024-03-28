@@ -13,58 +13,46 @@ const faviconPaths = [
   'blue-experience',
 ];
 
+const faviconPathsOther = [
+  'asg',
+  'brucite',
+  'geo',
+  'korovka',
+  'makfa',
+  'megafon',
+  'mts',
+  'nloto',
+  'proektirovanie',
+  'raiff',
+  'smeg',
+  'sargazarm',
+  'tele2',
+  'men-day',
+  'aclub',
+  'womens-day'
+];
+
 function App() {
+  const href = window.location.href;
 
   useEffect(() => {
-    const href = window.location.href;
     const head = document.getElementsByTagName('head');
-    const found = faviconPaths.find(item => href.includes(item));
-    const domainName = found ? found : 'default';
-    const path = `icons/favicons/${domainName}/favicon_package`;
+    const href = window.location.href;
+    const finded = faviconPaths.find((item) => href.includes(item) ? item : null);
+    const domainName = finded ? `-${finded}` : '';
+    const path = 'favicon/other-favicon/favicon';
 
-    const linkManifest = document.createElement('link');
-    linkManifest.rel = 'manifest';
-    linkManifest.href = `${path}/manifest.json`;
-    head[0].appendChild(linkManifest);
+    const faviconPath = `${path}${domainName}.ico`;
+    const faviconPath16x16 = `${path}${domainName}16x16.png`;
+    const faviconPath32x32 = `${path}${domainName}32x32.png`;
 
-    const linkAppleTouchIcon = document.createElement('link');
-    linkAppleTouchIcon.rel = 'apple-touch-icon';
-    linkAppleTouchIcon.sizes = '180x180';
-    linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
-    head[0].appendChild(linkAppleTouchIcon);
-
-    const iconSizesAndroid = ['android-chrome-192x192.png', 'android-chrome-512x512.png'];
-
-    iconSizesAndroid.forEach(back => {
-      const linkIcon = document.createElement('link');
-      linkIcon.rel = 'icon';
-      linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/${back}`;
-      head[0].appendChild(linkIcon);
-    });
-
-    const iconSizes = ['favicon-16x16.png', 'favicon-32x32.png', 'mstile-150x150.png','android-chrome-192x192.png', 'android-chrome-512x512.png'];
-
-    const linkIconFavicon = document.createElement('link');
-    linkIconFavicon.rel = 'icon';
-    linkIconFavicon.type="image/x-icon";
-    // linkIconFavicon.type = 'image/png';
-    linkIconFavicon.href = `${path}/favicon.ico?v=M44lzPylqQ`;
-    head[0].appendChild(linkIconFavicon);
-
-    const linkIconSafari = document.createElement('link');
-    linkIconSafari.rel = 'mask-icon';
-    linkIconSafari.type = 'image/svg+xml';
-    linkIconSafari.href = `${path}/safari-pinned-tab.svg`;
-    head[0].appendChild(linkIconSafari);
-
-    iconSizes.forEach(name => {
-      const linkIcon = document.createElement('link');
-      linkIcon.rel = 'icon';
-      linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/${name}`;
-      head[0].appendChild(linkIcon);
-    });
+    for (const link of [faviconPath, faviconPath16x16, faviconPath32x32]) {
+      const linkFavicon = document.createElement('link');
+      linkFavicon.rel = 'icon';
+      linkFavicon.type = 'image/png';
+      linkFavicon.href = link;
+      head[0].prepend(linkFavicon);
+    }
   }, []);
 
   return (
