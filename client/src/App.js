@@ -21,7 +21,11 @@ function App() {
     const domainName = found ? found : 'default';
     const path = `icons/favicons/${domainName}/favicon_package`;
 
-    document.getElementById('our-title').innerText(domainName);
+    const title = document.getElementById('our-title');
+
+    if (title) {
+      title.innerHTML(domainName);
+    }
 
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
