@@ -45,7 +45,7 @@ const Router = () => {
   }
   return (
     <BrowserRouter basename={'/main'}>
-      <Navbar collapseOnSelect className={`${domainName}-navbar`}>
+      <Navbar collapseOnSelect expand="lg" className={`${domainName}-navbar`}>
         <Navbar.Brand onClick={() => {history.push('/main')}}>
           <img className={'logo'} src={logoObj[domainName]} alt={'logo'}/>
         </Navbar.Brand>
