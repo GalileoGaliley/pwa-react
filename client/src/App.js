@@ -21,6 +21,8 @@ function App() {
     const domainName = found ? found : 'default';
     const path = `icons/favicons/${domainName}/favicon_package`;
 
+    document.getElementById('our-title').innerText(domainName);
+
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
     linkManifest.href = `${path}/manifest.json`;
@@ -51,6 +53,8 @@ function App() {
       document.head.prepend(linkIcon);
     });
   }, []);
+
+
 
   return (
     <Provider store={store}>
