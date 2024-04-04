@@ -24,7 +24,7 @@ function App() {
     const title = document.getElementById('our-title');
 
     if (title) {
-      title.innerHTML(domainName);
+      title.innerHTML = `${domainName.replace('experience', 'application')}`;
     }
 
     const linkManifest = document.createElement('link');
