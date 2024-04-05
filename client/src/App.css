@@ -350,6 +350,79 @@
   text-align: left;
 }
 
+.install-modal-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.install-modal-body {
+  background-color: white;
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.install-modal-title {
+  font-size: 24px;
+  text-align: center;
+  padding: 8px 24px;
+  font-weight: 700;
+}
+
+.install-modal-message {
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 24px;
+  font-weight: 400;
+}
+
+.install-modal-button-container {
+  padding: 0;
+  height: 30px;
+  position: relative;
+  border-top: 1px solid #8f8f8f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.install-modal-button {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.install-modal-button-accept {
+  color: #519efa;
+}
+
+.install-modal-button-cancel {
+  color: #fa5151;
+}
+
+.install-modal-vertical-line {
+  width: 1px;
+  height: 30px;
+
+  background: #8f8f8f;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 1px);
+}
+
+
 .default-action-container {
   background-color: #4b8347;
 }
