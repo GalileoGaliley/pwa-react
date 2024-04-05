@@ -97,7 +97,7 @@ function App() {
           <div className={'install-modal-button-container'}>
             <div onClick={() => {
               showInstallButton();
-
+              setShowModal(false)
             }} className={'install-modal-button install-modal-button-accept'}>
               Скачать
             </div>
