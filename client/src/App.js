@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import AddToHomeScreen from '@ideasio/add-to-homescreen-react';
+
 import './App.css';
 import { Provider } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -58,6 +58,30 @@ function App() {
     });
   }, []);
 
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Показать вашу кнопку или баннер для установки
+    showInstallButton();
+  });
+
+  function showInstallButton() {
+    const installButton = document.getElementById('installButton');
+    installButton.style.display = 'block';
+    installButton.addEventListener('click', () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Пользователь согласился установить приложение');
+        } else {
+          console.log('Пользователь отказался устанавливать приложение');
+        }
+        deferredPrompt = null;
+      });
+    });
+  }
 
 
   return (
@@ -65,7 +89,6 @@ function App() {
       <div className="App">
         <Router/>
       </div>
-      <AddToHomeScreen />
       <Toast />
     </Provider>
   );
