@@ -88,7 +88,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Router/>
-        <button className={'button'} onClick={showInstallButton}> скочать</button>
+        <button className={'button'} id={'installButton'} onClick={showInstallButton}> скочать</button>
       </div>
       <Toast />
     </Provider>
