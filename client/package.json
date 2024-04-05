@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/plugin-transform-template-literals": "7.16.7",
     "@babel/preset-typescript": "7.16.7",
+    "@ideasio/add-to-homescreen-react": "^1.0.10",
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.5",

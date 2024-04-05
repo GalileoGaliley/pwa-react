@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-
+import AddToHomeScreen from '@ideasio/add-to-homescreen-react';
 import './App.css';
 import { Provider } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -65,6 +65,7 @@ function App() {
       <div className="App">
         <Router/>
       </div>
+      <AddToHomeScreen />
       <Toast />
     </Provider>
   );
