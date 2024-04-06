@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import './App.css';
 import { Provider } from 'react-redux';
@@ -14,9 +14,11 @@ const faviconPaths = [
 ];
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const href = window.location.href;
+
     const found = faviconPaths.find(item => href.includes(item));
     const domainName = found ? found : 'default';
     const path = `icons/favicons/${domainName}/favicon_package`;
@@ -63,34 +65,70 @@ function App() {
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // Показать вашу кнопку или баннер для установки
-    showInstallButton();
   });
 
   function showInstallButton() {
-    const installButton = document.getElementById('installButton');
-    installButton.style.display = 'block';
-    installButton.addEventListener('click', () => {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('Пользователь согласился установить приложение');
-        } else {
-          console.log('Пользователь отказался устанавливать приложение');
-        }
-        deferredPrompt = null;
-      });
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Пользователь согласился установить приложение');
+        localStorage.setItem('installed', 'true');
+      } else {
+        console.log('Пользователь отказался устанавливать приложение');
+        // sessionStorage.setItem('no_installed', 'true');
+
+      }
+      deferredPrompt = null;
     });
   }
 
+  const InstallModal = () => {
+    return (
+      <div className={'install-modal-back'}>
+        <div className={'install-modal-body'}>
+          <div className={'install-modal-title'}>
+            Часто пользуетесь
+            <br/>
+            сайтом?
+          </div>
+          <div className={'install-modal-message'}>
+            Скачайте его на рабочий экран что-бы иметь к нему быстрый доступ
+          </div>
+          <div className={'install-modal-button-container'}>
+            <div onClick={() => {
+              showInstallButton();
+              setShowModal(false)
+            }} className={'install-modal-button install-modal-button-accept'}>
+              Скачать
+            </div>
+            <div className={'install-modal-vertical-line'}>
 
+            </div>
+            <div onClick={() => {
+              setShowModal(false);
+            }} className={'install-modal-button install-modal-button-cancel'}>
+              Отменить
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  useEffect(() => {
+    const installed = localStorage.getItem('installed');
+    // const sessionNotInstalled = sessionStorage.getItem('no_installed')
+    if (!installed || installed !== 'true') {
+      setShowModal(true);
+    }
+  }, []);
   return (
     <Provider store={store}>
       <div className="App">
         <Router/>
-        <button className={'button'} id={'installButton'} onClick={showInstallButton}> скочать</button>
       </div>
       <Toast />
+      {showModal ? (<InstallModal />) : null}
     </Provider>
   );
 }
