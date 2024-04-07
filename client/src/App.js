@@ -60,28 +60,6 @@ function App() {
     });
   }, []);
 
-  let deferredPrompt;
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-  });
-
-  function showInstallButton() {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('Пользователь согласился установить приложение');
-        localStorage.setItem('installed', 'true');
-      } else {
-        console.log('Пользователь отказался устанавливать приложение');
-        // sessionStorage.setItem('no_installed', 'true');
-
-      }
-      deferredPrompt = null;
-    });
-  }
-
   const InstallModal = () => {
     return (
       <div className={'install-modal-back'}>
@@ -96,7 +74,6 @@ function App() {
           </div>
           <div className={'install-modal-button-container'}>
             <div onClick={() => {
-              showInstallButton();
               setShowModal(false)
             }} className={'install-modal-button install-modal-button-accept'}>
               Скачать
@@ -116,11 +93,22 @@ function App() {
   }
 
   useEffect(() => {
-    const installed = localStorage.getItem('installed');
-    // const sessionNotInstalled = sessionStorage.getItem('no_installed')
-    if (!installed || installed !== 'true') {
-      setShowModal(true);
-    }
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Пользователь согласился установить приложение');
+          localStorage.setItem('installed', 'true');
+        } else {
+          console.log('Пользователь отказался устанавливать приложение');
+          // sessionStorage.setItem('no_installed', 'true');
+
+        }
+        deferredPrompt = null;
+      });
+    });
   }, []);
   return (
     <Provider store={store}>
@@ -128,7 +116,7 @@ function App() {
         <Router/>
       </div>
       <Toast />
-      {showModal ? (<InstallModal />) : null}
+      {/*{showModal ? (<InstallModal />) : null}*/}
     </Provider>
   );
 }
