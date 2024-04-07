@@ -96,12 +96,15 @@ function App() {
   useEffect(() => {
     let deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt',  (e) => {
+    window.addEventListener('beforeinstallprompt',  async(e) => {
       deferredPrompt.prompt();
+
+      await axios.post('/log/output', JSON.stringify({
+        e: e
+      }))
       deferredPrompt.userChoice.then(async (choiceResult) => {
         await axios.post('/log/output', JSON.stringify({
           data: choiceResult,
-          e: e
         }))
         if (choiceResult.outcome === 'accepted') {
           console.log('Пользователь согласился установить приложение');
