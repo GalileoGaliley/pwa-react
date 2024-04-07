@@ -33,12 +33,10 @@ axiosInstance.interceptors.response.use(
     return res;
   },
   async (e) => {
-    console.log('12312312');
-
     const dispatch = store.dispatch
 
     console.log(e.response.data.message);
-    
+
     dispatch(setToast(e.response.data.message))
     console.log(e);
     return Promise.reject(e);

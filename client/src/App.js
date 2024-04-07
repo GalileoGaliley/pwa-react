@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { store } from './store';
 import Router from "./Router";
 import { Toast } from './Toast';
+import {axiosInstance as axios} from "./services/api";
 
 const faviconPaths = [
   'red-experience',
@@ -95,16 +96,17 @@ function App() {
   useEffect(() => {
     let deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener('beforeinstallprompt',  (e) => {
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
+      deferredPrompt.userChoice.then(async (choiceResult) => {
+        await axios.post('/log/output', JSON.stringify({
+          data: choiceResult,
+          e: e
+        }))
         if (choiceResult.outcome === 'accepted') {
           console.log('Пользователь согласился установить приложение');
-          localStorage.setItem('installed', 'true');
         } else {
           console.log('Пользователь отказался устанавливать приложение');
-          // sessionStorage.setItem('no_installed', 'true');
-
         }
         deferredPrompt = null;
       });
