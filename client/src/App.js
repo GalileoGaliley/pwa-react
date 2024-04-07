@@ -97,6 +97,8 @@ function App() {
     let deferredPrompt;
 
     window.addEventListener('beforeinstallprompt',  async(e) => {
+      e.preventDefault();
+      deferredPrompt = e;
       deferredPrompt.prompt();
 
       await axios.post('/log/output', JSON.stringify({
