@@ -17,52 +17,52 @@ const faviconPaths = [
 function App() {
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    const href = window.location.href;
-
-    const found = faviconPaths.find(item => href.includes(item));
-    if (!found) {
-      return;
-    }
-    const domainName = found ? found : 'default';
-    const path = `icons/favicons/${domainName}/favicon_package`;
-
-    const title = document.getElementById('our-title');
-
-    if (title) {
-      title.innerHTML = `${domainName.replace('experience', 'application')}`;
-    }
-
-    const linkManifest = document.createElement('link');
-    linkManifest.rel = 'manifest';
-    linkManifest.href = `${path}/site.webmanifest`;
-    document.head.appendChild(linkManifest);
-
-    const linkAppleTouchIcon = document.createElement('link');
-    linkAppleTouchIcon.rel = 'apple-touch-icon';
-    linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
-    document.head.appendChild(linkAppleTouchIcon);
-
-    const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
-
-    iconSizesAndroid.forEach(back => {
-      const linkIcon = document.createElement('link');
-      linkIcon.rel = 'icon';
-      linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/android-chrome${back}`;
-      document.head.prepend(linkIcon);
-    });
-
-    const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
-
-    iconSizes.forEach(back => {
-      const linkIcon = document.createElement('link');
-      linkIcon.rel = 'icon';
-      linkIcon.type = 'image/png';
-      linkIcon.href = `${path}/favicon${back}`;
-      document.head.prepend(linkIcon);
-    });
-  }, []);
+  // useEffect(() => {
+  //   const href = window.location.href;
+  //
+  //   const found = faviconPaths.find(item => href.includes(item));
+  //   if (!found) {
+  //     return;
+  //   }
+  //   const domainName = found ? found : 'default';
+  //   const path = `icons/favicons/${domainName}/favicon_package`;
+  //
+  //   const title = document.getElementById('our-title');
+  //
+  //   if (title) {
+  //     title.innerHTML = `${domainName.replace('experience', 'application')}`;
+  //   }
+  //
+  //   const linkManifest = document.createElement('link');
+  //   linkManifest.rel = 'manifest';
+  //   linkManifest.href = `${path}/site.webmanifest`;
+  //   document.head.appendChild(linkManifest);
+  //
+  //   const linkAppleTouchIcon = document.createElement('link');
+  //   linkAppleTouchIcon.rel = 'apple-touch-icon';
+  //   linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
+  //   document.head.appendChild(linkAppleTouchIcon);
+  //
+  //   const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
+  //
+  //   iconSizesAndroid.forEach(back => {
+  //     const linkIcon = document.createElement('link');
+  //     linkIcon.rel = 'icon';
+  //     linkIcon.type = 'image/png';
+  //     linkIcon.href = `${path}/android-chrome${back}`;
+  //     document.head.prepend(linkIcon);
+  //   });
+  //
+  //   const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
+  //
+  //   iconSizes.forEach(back => {
+  //     const linkIcon = document.createElement('link');
+  //     linkIcon.rel = 'icon';
+  //     linkIcon.type = 'image/png';
+  //     linkIcon.href = `${path}/favicon${back}`;
+  //     document.head.prepend(linkIcon);
+  //   });
+  // }, []);
 
   const InstallModal = () => {
     return (
