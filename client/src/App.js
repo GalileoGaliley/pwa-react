@@ -21,6 +21,9 @@ function App() {
     const href = window.location.href;
 
     const found = faviconPaths.find(item => href.includes(item));
+    if (!found) {
+      return;
+    }
     const domainName = found ? found : 'default';
     const path = `icons/favicons/${domainName}/favicon_package`;
 
