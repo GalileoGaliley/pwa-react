@@ -1,6 +1,7 @@
 {
   "short_name": "BLUE P",
   "name": "Progressive Web App",
+  "description": "Это тестовое приложение.",
   "icons": [
     {
       "src": "/icons/favicons/blue-experience/favicon_package/favicon.ico",

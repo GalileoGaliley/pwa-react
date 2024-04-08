@@ -1,6 +1,7 @@
 {
   "short_name": "YELLOW T",
-  "name": "Progressive Web App",
+  "name": "Progressive Web App YELLOW",
+  "description": "Это тестовое приложение.",
   "icons": [
     {
       "src": "/icons/favicons/yellow-experience/favicon_package/favicon.ico",

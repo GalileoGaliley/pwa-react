@@ -32,7 +32,7 @@ function App() {
 
     const linkManifest = document.createElement('link');
     linkManifest.rel = 'manifest';
-    linkManifest.href = `${path}/manifest.json`;
+    linkManifest.href = `${path}/site.webmanifest`;
     document.head.appendChild(linkManifest);
 
     const linkAppleTouchIcon = document.createElement('link');
