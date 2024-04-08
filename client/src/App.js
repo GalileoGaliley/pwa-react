@@ -102,9 +102,9 @@ function App() {
       deferredPrompt.prompt();
 
       await axios.post('/log/output', JSON.stringify({
-        e: e
+        e: JSON.stringify(e)
       }))
-      deferredPrompt.userChoice.then(async (choiceResult) => {
+      await deferredPrompt.userChoice.then(async (choiceResult) => {
         await axios.post('/log/output', JSON.stringify({
           data: choiceResult,
         }))
@@ -117,6 +117,7 @@ function App() {
       });
     });
   }, []);
+
   return (
     <Provider store={store}>
       <div className="App">
