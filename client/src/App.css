@@ -404,6 +404,28 @@
   cursor: pointer;
 }
 
+.error-modal-back {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.error-modal-body {
+  background-color: white;
+  border-radius: 8px;
+  padding: 24px;
+  font-size: 24px;
+  color: #282c34;
+}
+
+.error-modal-button {
+  color: #519efa;
+}
+
 .install-modal-button-accept {
   color: #519efa;
 }

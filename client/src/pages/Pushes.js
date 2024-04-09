@@ -8,6 +8,22 @@ export default function Pushes() {
   const domainName = useDomain();
   const [title, setTitle] = useState('Новое уведомление');
   const [body, setBody] = useState('У вас есть новое сообщение');
+  const [showModal, setShowModal] = useState(false);
+
+  const errorPush = () => {
+    return (
+      <div onClick={() => setShowModal(false)} className={'error-modal-back'}>
+        <div className={'error-modal-body'}>
+          <div>
+            Показ уведомлений запрещен пользователем
+          </div>
+          <div onClick={() => setShowModal(false)} className={'error-modal-button'}>
+            ОК
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const pushConfig = {
     icon: '/iconPush.png',
@@ -36,6 +52,8 @@ export default function Pushes() {
             body: body,
             icon: "/iconPush.png"
           });
+        } else {
+
         }
       });
     } else {
