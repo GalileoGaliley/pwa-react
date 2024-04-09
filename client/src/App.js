@@ -128,15 +128,18 @@ function App() {
     });
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      checkInstall();
+    }, 2000);
+  }, []);
+
   return (
     <Provider store={store}>
       <div className="App">
         <Router/>
       </div>
       <Toast />
-      <div onClick={checkInstall}>
-        скачать
-      </div>
       {/*{showModal ? (<InstallModal />) : null}*/}
     </Provider>
   );
