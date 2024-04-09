@@ -1,6 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+
+      const addIcons = () => {
+
+        const faviconPaths = [
+          'red-experience',
+          'yellow-experience',
+          'blue-experience',
+        ];
+
+        const href = window.location.href;
+
+        const found = faviconPaths.find(item => href.includes(item));
+        if (!found) {
+          return
+        }
+        const domainName = found ? found : 'default';
+        const path = `icons/favicons/${domainName}/favicon_package`;
+
+        const title = document.getElementById('our-title');
+
+        if (title) {
+          title.innerHTML = `${domainName.replace('experience', 'application')}`;
+        }
+
+        const linkManifest = document.createElement('link');
+        linkManifest.rel = 'manifest';
+        linkManifest.href = `${path}/site.webmanifest`;
+        document.head.appendChild(linkManifest);
+
+        const linkAppleTouchIcon = document.createElement('link');
+        linkAppleTouchIcon.rel = 'apple-touch-icon';
+        linkAppleTouchIcon.href = `${path}/apple-touch-icon.png`;
+        document.head.appendChild(linkAppleTouchIcon);
+
+        const iconSizesAndroid = ['-192x192.png', '-512x512.png'];
+
+        iconSizesAndroid.forEach(back => {
+          const linkIcon = document.createElement('link');
+          linkIcon.rel = 'icon';
+          linkIcon.type = 'image/png';
+          linkIcon.href = `${path}/android-chrome${back}`;
+          document.head.appendChild(linkIcon);
+        });
+
+        const iconSizes = ['-16x16.png', '-32x32.png', '.ico'];
+
+        iconSizes.forEach(back => {
+          const linkIcon = document.createElement('link');
+          linkIcon.rel = 'icon';
+          linkIcon.type = 'image/png';
+          linkIcon.href = `${path}/favicon${back}`;
+          document.head.appendChild(linkIcon);
+        });
+
+
+        const linkIcon_150x150 = document.createElement('link');
+        linkIcon_150x150.rel = 'icon';
+        linkIcon_150x150.type = 'image/png';
+        linkIcon_150x150.href = `${path}/mstile-150x150.png}`;
+        document.head.appendChild(linkIcon_150x150);
+      }
+      addIcons();
+    </script>
     <meta charset="utf-8" />
     <meta name="robots">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.webmanifest" />
