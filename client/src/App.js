@@ -103,7 +103,7 @@ function App() {
     )
   }
 
-  useEffect(() => {
+  const checkInstall = () => {
     let deferredPrompt;
 
     window.addEventListener('beforeinstallprompt',  async(e) => {
@@ -126,7 +126,7 @@ function App() {
         deferredPrompt = null;
       });
     });
-  }, []);
+  }
 
   return (
     <Provider store={store}>
@@ -134,6 +134,9 @@ function App() {
         <Router/>
       </div>
       <Toast />
+      <div onClick={checkInstall}>
+        скачать
+      </div>
       {/*{showModal ? (<InstallModal />) : null}*/}
     </Provider>
   );
