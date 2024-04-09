@@ -67,7 +67,7 @@ function App() {
   //   const linkIcon_150x150 = document.createElement('link');
   //   linkIcon_150x150.rel = 'icon';
   //   linkIcon_150x150.type = 'image/png';
-  //   linkIcon_150x150.href = `${path}/mstile-150x150.png}`;
+  //   linkIcon_150x150.href = `${path}/mstile-150x150.png`;
   //   document.head.prepend(linkIcon_150x150);
   // }, []);
 
