@@ -105,7 +105,7 @@ function App() {
 
   const checkInstall = () => {
     let deferredPrompt;
-
+    console.log(1);
     window.addEventListener('beforeinstallprompt',  async(e) => {
       e.preventDefault();
       deferredPrompt = e;
