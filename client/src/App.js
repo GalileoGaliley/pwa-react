@@ -53,7 +53,7 @@ function App() {
       document.head.prepend(linkIcon);
     });
 
-    const iconSizes = ['-16x16.png', '-32x32.png', '-150x150.png', '.ico'];
+    const iconSizes = ['-16x16.png', '-32x32.png', '.ico'];
 
     iconSizes.forEach(back => {
       const linkIcon = document.createElement('link');
@@ -62,6 +62,13 @@ function App() {
       linkIcon.href = `${path}/favicon${back}`;
       document.head.prepend(linkIcon);
     });
+
+
+    const linkIcon_150x150 = document.createElement('link');
+    linkIcon_150x150.rel = 'icon';
+    linkIcon_150x150.type = 'image/png';
+    linkIcon_150x150.href = `${path}/mstile-150x150.png}`;
+    document.head.prepend(linkIcon_150x150);
   }, []);
 
   const InstallModal = () => {
