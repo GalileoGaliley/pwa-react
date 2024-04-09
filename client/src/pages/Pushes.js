@@ -10,7 +10,7 @@ export default function Pushes() {
   const [body, setBody] = useState('У вас есть новое сообщение');
   const [showModal, setShowModal] = useState(false);
 
-  const errorPush = () => {
+  const ErrorPush = () => {
     return (
       <div onClick={() => setShowModal(false)} className={'error-modal-back'}>
         <div className={'error-modal-body'}>
@@ -53,7 +53,7 @@ export default function Pushes() {
             icon: "/iconPush.png"
           });
         } else {
-
+          setShowModal(true);
         }
       });
     } else {
@@ -128,6 +128,7 @@ export default function Pushes() {
                 <input className={'text-input'} onChange={(e) => setBody(e.target.value)} />
               </div>
               <Button onClick={message}>Подтвердить</Button>
+              {showModal ? (<ErrorPush />) : null}
             </div>
         </div>
     )
